@@ -1,0 +1,38 @@
+buildscript {
+    ext {
+        scalaVersion = "2.12.12"
+        scalaMinVersion = "2.12"
+        sparkVersion = "3.0.1"
+    }
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'java-library'
+apply plugin: 'maven'
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+
+    compile "org.scala-lang:scala-library:" + scalaVersion
+    compile('org.apache.spark:spark-core_' + scalaMinVersion + ':' + sparkVersion)
+    compile('org.apache.spark:spark-sql_' + scalaMinVersion + ':' + sparkVersion)
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.scalatest:scalatest_2.12:3.2.0'
+    testRuntime 'org.scala-lang.modules:scala-xml_2.12:1.1.0'
+}
+
+jar {
+}

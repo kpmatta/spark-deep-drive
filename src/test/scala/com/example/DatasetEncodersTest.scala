@@ -10,10 +10,9 @@ case class Employee(name: String, role: String, salary: Integer)
 
 class DatasetEncodersTest extends AnyFlatSpec with Matchers  with SparkSessionLocal {
 
-  behavior of "using encoders"
-
   import DataFixture._
 
+  behavior of "using encoders"
   it should "use explicit encoder" in  {
     val employeeEncoder = Encoders.product[Employee]
     val employeeEncoder1 = ExpressionEncoder[Employee]()
